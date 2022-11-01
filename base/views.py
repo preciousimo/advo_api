@@ -43,6 +43,14 @@ class AdvocateDetail(APIView):
         advocate = Advocate.objects.get(username=username)
         serializer = AdvocateSerializer(advocate, many=False)
         return Response(serializer.data)
+
+    def put(self, request, username):
+        advocate = Advocate.objects.get(username=username)
+        advocate.username = request.data['username']
+        advocate.bio = request.data['bio']
+        serializer = AdvocateSerializer(advocate, many=False)
+        return Response(serializer.data)
+
  
 
 # @api_view(['GET', 'PUT', 'DELETE'])
