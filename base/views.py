@@ -10,3 +10,7 @@ def endpoints(request):
 def advocate_list(request):
     data = ['Preciousimo', 'Dennis', 'Jolomon']
     return JsonResponse(data, safe=False)
+
+def advocate_details(request, username):
+    data = username
+    return JsonResponse(data, safe=False)
