@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.db.models import Q
 
 from rest_framework.decorators import api_view
@@ -39,17 +39,29 @@ def advocate_list(request):
         return Response(serializer.data)
 
 class AdvocateDetail(APIView):
+
+    def get_object(self, username):
+        try:
+            return Advocate.objects.get(username=username)
+        except Advocate.DoesNotExist:
+            raise Http404
+
     def get(self, request, username):
-        advocate = Advocate.objects.get(username=username)
+        advocate = self.get_object(username)
         serializer = AdvocateSerializer(advocate, many=False)
         return Response(serializer.data)
 
     def put(self, request, username):
-        advocate = Advocate.objects.get(username=username)
+        advocate = self.get_object(username)
         advocate.username = request.data['username']
         advocate.bio = request.data['bio']
         serializer = AdvocateSerializer(advocate, many=False)
         return Response(serializer.data)
+
+    def delete(self, request, username):
+        advocate = self.get_object(username)
+        advocate.delete()
+        return Response('User was deleted!')
 
  
 
