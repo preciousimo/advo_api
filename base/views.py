@@ -38,8 +38,19 @@ def advocate_list(request):
         return Response(serializer.data)
  
 
-@api_view(['GET'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def advocate_detail(request, username):
     advocate = Advocate.objects.get(username=username)
-    serializer = AdvocateSerializer(advocate, many=False)
-    return Response(serializer.data)
+
+    if request.method == 'GET':
+        serializer = AdvocateSerializer(advocate, many=False)
+        return Response(serializer.data)
+        
+    if request.method == 'PUT':
+        advocate.username = request.data['username']
+        advocate.bio = request.data['bio']
+
+        advocate.save()
+
+        serializer = AdvocateSerializer(advocate, many=False)
+        return Response(serializer.data)
