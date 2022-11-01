@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db.models import Q
 
@@ -14,16 +14,29 @@ def endpoints(request):
     data = ['/advocates', 'advocates/:username']
     return Response(data)
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def advocate_list(request):
-    query = request.GET.get('query')
+    # Handles GET requests
+    if request.method == 'GET':
+        query = request.GET.get('query')
+        
+        if query == None:
+            query = ''
+        
+        advocates = Advocate.objects.filter(Q(username__icontains=query) | Q(bio__icontains=query))
+        serializer = AdvocateSerializer(advocates, many=True)
 
-    if query == None:
-        query = ''
+        return Response(serializer.data)
 
-    advocates = Advocate.objects.filter(Q(username__icontains=query) | Q(bio__icontains=query))
-    serializer = AdvocateSerializer(advocates, many=True)
-    return Response(serializer.data)
+    if request.method == 'POST':
+        advocate = Advocate.objects.create(
+            username=request.data['username'],
+            bio=request.data['bio']
+        )
+        serializer = AdvocateSerializer(advocate, many=False)
+        
+        return Response(serializer.data)
+ 
 
 @api_view(['GET'])
 def advocate_detail(request, username):
