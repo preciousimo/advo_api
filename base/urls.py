@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+                       # ADVOCATES
     #     """ Class based view URL"""
     path('', views.endpoints),
     path('advocates', views.advocate_list, name='advocates'),
@@ -9,5 +10,8 @@ urlpatterns = [
 
     #    """ Class based view URL"""
     path('advocates/<str:username>/', views.AdvocateDetail.as_view()),
+
+                        # COMPANIES
+    
 
 ]
