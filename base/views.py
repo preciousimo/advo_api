@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse, Http404
 from django.db.models import Q
 
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -16,6 +17,7 @@ def endpoints(request):
     return Response(data)
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def advocate_list(request):
     # Handles GET requests
     if request.method == 'GET':
