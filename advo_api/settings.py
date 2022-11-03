@@ -33,6 +33,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS')
 
 # Application definition
 
