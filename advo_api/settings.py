@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 from datetime import timedelta
-import psycopg2
 import dj_database_url
 from decouple import config, Csv 
 from dotenv import load_dotenv
@@ -131,7 +130,7 @@ WSGI_APPLICATION = 'advo_api.wsgi.application'
 DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': config('DB_NAME'), 
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
