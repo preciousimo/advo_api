@@ -33,7 +33,6 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS')
 
 # Application definition
 
@@ -192,3 +191,5 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+CSRF_TRUSTED_ORIGINS = str(os.getenv('CSRF_TRUSTED_ORIGINS'))
