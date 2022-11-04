@@ -72,7 +72,7 @@ Contributions are what make the open source community such an amazing place to b
 
 ## Contact
 
-Precious Imoniakemu - [@CodeWithPython](https://twitter.com/preciousimo2) - preciousimoniakemu@gmail.com
+Precious Imoniakemu - [@preciousimo2](https://twitter.com/preciousimo2) - preciousimoniakemu@gmail.com
 
 Project Link: [https://github.com/preciousimo/advo_api](https://github.com/preciousimo/advo_api)
 
