@@ -1,64 +1,83 @@
 # Advo API
 
+API that outputs a list of developer advocates with their details such as where they work, social links, bio, etc. <br>
+https://web-production-a1a1.up.railway.app
 
-### Cloning the repository
+## Features
 
---> Clone the repository using the command below :
+API has two(2) endpoints
+
+```bash
+/advocates
+```
+
+```bash
+/advocates/username
+```
+
+## Installation
+
+1. Clone the repo
 ```bash
 git clone https://github.com/preciousimo/advo_api.git
-
 ```
 
---> Move into the directory where we have the project files : 
+2. Move into the directory where we have the project files
 ```bash
 cd advo_api
-
 ```
 
---> Create a virtual environment :
+3. Create a virtual environment :
 ```bash
-# Let's install virtualenv first
-pip install virtualenv
-
-# Then we create our virtual environment
 virtualenv envname
-
 ```
 
---> Activate the virtual environment :
+4. Activate the virtual environment :
 ```bash
 envname\Scripts\activate
-
 ```
 
---> Install the requirements :
+5. Install the requirements :
 ```bash
 pip install -r requirements.txt
-
 ```
 
---> Migrate Database
+6. Migrate Database
 ```bash
 python manage.py migrate
-
 ```
 
---> Create Super User
+7. Create Super User
 ```bash
 python manage.py createsuperuser
-
 ```
 
-#
-
-### Running the App
-
---> To run the App, we use :
+8. To run the App, we use :
 ```bash
 python manage.py runserver
-
 ```
+⚠ Then, the development server will be started at http://127.0.0.1:8000/
 
-> ⚠ Then, the development server will be started at http://127.0.0.1:8000/
 
-#
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+## Contact
+
+Precious Imoniakemu - [@CodeWithPython](https://twitter.com/CodeWithPython) - preciousimoniakemu@gmail.com
+
+Project Link: [https://github.com/preciousimo/advo_api](https://github.com/preciousimo/advo_api)
+
+
+## Acknowledgements
+* [Django Docs](https://docs.djangoproject.com/en/4.1/)
+* [DRF Docs](https://www.django-rest-framework.org/)
+* [Dennisivy](https://twitter.com/dennisivy11)
