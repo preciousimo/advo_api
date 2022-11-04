@@ -192,4 +192,4 @@ CORS_ALLOW_CREDENTIALS = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CSRF_TRUSTED_ORIGINS = str(os.getenv('CSRF_TRUSTED_ORIGINS'))
+CSRF_TRUSTED_ORIGINS = ['https://web-production-a1a1.up.railway.app']
