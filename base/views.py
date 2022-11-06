@@ -13,7 +13,7 @@ from .serializers import AdvocateSerializer, CompanySerializer
 # Create your views here.
 @api_view(['GET'])
 def endpoints(request):
-    data = ['/advocates', 'advocates/:username']
+    data = ['/advocates', 'advocates/username']
     return Response(data)
 
 @api_view(['GET', 'POST'])
